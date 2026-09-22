@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>S.M.E Financial Insights - AI Assistant</title>
+  <meta name="description"
+    content="Get instant financial advice and support from our AI-powered FinTech Helper chatbot.">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    /* Chatbot Page Styles */
+    .chatbot-hero {
+      text-align: center;
+      margin-top: 2.5rem;
+      margin-bottom: 1.5rem;
+      animation: fadeInUp 0.6s ease-out;
+    }
+
+    .chatbot-hero h2 {
+      font-size: 1.8rem;
+      color: var(--primary-blue);
+      margin-bottom: 0.5rem;
+    }
+
+    .chatbot-hero p {
+      color: var(--text-light);
+      font-size: 1.05rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .chatbot-features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-bottom: 2rem;
+      animation: fadeInUp 0.6s ease-out 0.15s both;
+    }
+
+    .feature-card {
+      background: var(--accent-white);
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+      padding: 1.25rem;
+      text-align: center;
+      transition: var(--transition);
+      border-top: 3px solid transparent;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+      border-top-color: var(--secondary-green);
+    }
+
+    .feature-icon {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .feature-card h4 {
+      color: var(--primary-blue);
+      margin-bottom: 0.3rem;
+      font-size: 1rem;
+    }
+
+    .feature-card p {
+      color: var(--text-light);
+      font-size: 0.85rem;
+      line-height: 1.4;
+    }
+
+    /* Full-page chatbot embed area */
+    .chatbot-embed-section {
+      background: var(--accent-white);
+      border-radius: var(--border-radius);
+      box-shadow: 0 8px 32px rgba(0, 51, 160, 0.10);
+      overflow: hidden;
+      margin-bottom: 2.5rem;
+      border: 2px solid rgba(0, 51, 160, 0.08);
+      animation: fadeInUp 0.6s ease-out 0.3s both;
+    }
+
+    .chatbot-embed-header {
+      background: linear-gradient(135deg, var(--primary-blue) 0%, #0044cc 100%);
+      color: var(--accent-white);
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .pulse-dot {
+      width: 10px;
+      height: 10px;
+      background: #4ADE80;
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.6;
+        transform: scale(1.3);
+      }
+    }
+
+    .chatbot-embed-header h3 {
+      color: var(--accent-white);
+      margin: 0;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .chatbot-embed-header .status-text {
+      font-size: 0.85rem;
+      opacity: 0.8;
+      margin-left: auto;
+    }
+
+    .chatbot-embed-body {
+      width: 100%;
+      min-height: 550px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #f8faff;
+    }
+
+    /* Instruction to open the chat widget */
+    .chatbot-instructions {
+      text-align: center;
+      padding: 3rem 2rem;
+    }
+
+    .chatbot-instructions .big-icon {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      display: block;
+      animation: bounce 2s ease-in-out infinite;
+    }
+
+    @keyframes bounce {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    .chatbot-instructions h3 {
+      color: var(--primary-blue);
+      margin-bottom: 0.5rem;
+      font-size: 1.4rem;
+    }
+
+    .chatbot-instructions p {
+      color: var(--text-light);
+      font-size: 1rem;
+      max-width: 450px;
+      margin: 0 auto 1.5rem;
+      line-height: 1.6;
+    }
+
+    .open-chat-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--primary-blue) 0%, #0044cc 100%);
+      color: var(--accent-white);
+      border: none;
+      padding: 0.85rem 2.5rem;
+      font-size: 1.05rem;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: var(--transition);
+      box-shadow: 0 4px 15px rgba(0, 51, 160, 0.3);
+    }
+
+    .open-chat-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 51, 160, 0.4);
+    }
+
+    .open-chat-btn:active {
+      transform: translateY(0);
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .chatbot-hero h2 {
+        font-size: 1.4rem;
+      }
+
+      .chatbot-features {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .chatbot-embed-body {
+        min-height: 400px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .chatbot-features {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <h1>Smart Financial Insights Platform</h1>
+      <nav class="nav-links">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="transactions.html">Transactions</a>
+        <a href="budget.html">Budget</a>
+        <a href="upload.html">Upload</a>
+        <a href="chatbot.html" class="active">AI Assistant</a>
+        <span id="userBusinessName"
+          style="margin-left: 1rem; color: var(--secondary-green); font-weight: 600;">Loading...</span>
+        <a href="#" id="logoutBtn">Logout</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Hero Section -->
+    <section class="chatbot-hero">
+      <h2> FinTech Helper — AI Assistant</h2>
+      <p>Get instant answers about cash flow management, budgeting tips, and financial best practices for your SME.</p>
+    </section>
+
+
+
+    <!-- Chatbot Embed Section -->
+    <section class="chatbot-embed-section">
+      <div class="chatbot-embed-header">
+        <div class="pulse-dot"></div>
+        <h3>FinTech Helper</h3>
+        <span class="status-text">Online — Ready to help</span>
+      </div>
+      <div class="chatbot-embed-body">
+        <div class="chatbot-instructions">
+          <h3>Your AI Assistant is Ready!</h3>
+          <p>Click the button below or use the chat widget in the bottom-right corner to start a conversation with
+            FinTech Helper.</p>
+          <button class="open-chat-btn" id="openChatBtn" onclick="openBotpressChat()">
+            Start Chatting
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Auth Logic to handle route protection -->
+  <script type="module" src="js/auth.js"></script>
+  <!-- Fetch & display business name + logout for chatbot page -->
+  <script type="module">
+    import { auth, db } from './js/firebase-config.js';
+    import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
+    import { doc, getDoc } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
+
+    const userBusinessName = document.getElementById('userBusinessName');
+    const logoutBtn = document.getElementById('logoutBtn');
+
+    onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        const userDoc = await getDoc(doc(db, "users", user.uid));
+        if (userDoc.exists() && userDoc.data().businessName) {
+          userBusinessName.textContent = userDoc.data().businessName;
+        } else {
+          // Fallback: use Firebase Auth displayName (set at registration)
+          userBusinessName.textContent = user.displayName || user.email;
+        }
+      }
+    });
+
+    if (logoutBtn) {
+      logoutBtn.addEventListener('click', async () => {
+        await signOut(auth);
+        window.location.href = 'index.html';
+      });
+    }
+  </script>
+
+  <!-- Botpress Webchat v3 — Script injection (official method) -->
+  <script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js"></script>
+  <script>
+    // Initialize the Botpress webchat with the clientId from your config
+    window.botpress.on("webchat:ready", () => {
+      console.log("Botpress webchat is ready");
+    });
+
+    window.botpress.init({
+      "clientId": "40a01e0a-5896-4f31-95fb-9b5f581620ab",
+      "configuration": {
+        "botName": "FinTech Helper",
+        "color": "#2461a8",
+        "themeMode": "light",
+        "radius": 2
+      }
+    });
+
+    // Function to programmatically open the chat
+    function openBotpressChat() {
+      try {
+        window.botpress.open();
+      } catch (e) {
+        console.log("Opening chat widget...", e);
+      }
+    }
+  </script>
+
+</body>
+
+</html>

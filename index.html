@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SME Cash Insight - Login</title>
+  <meta name="description" content="Secure financial management tool for Kenyan SMEs. Login to manage your cashbook and view insights.">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <div class="flex-center">
+    <div class="card">
+      <div class="text-center mb-1">
+        <h2>SME Cash Insight</h2>
+        <p>Manage your finances securely.</p>
+      </div>
+
+      <!-- Login Form -->
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="loginEmail">Email Address</label>
+          <input type="email" id="loginEmail" class="form-control" required placeholder="name@business.com">
+        </div>
+        <div class="form-group">
+          <label for="loginPassword">Password</label>
+          <input type="password" id="loginPassword" class="form-control" required placeholder="••••••••">
+        </div>
+        <div id="loginError" class="error-msg hidden"></div>
+        <button type="submit" class="btn" id="loginBtn">Log In</button>
+      </form>
+
+      <!-- Registration Form (Hidden by default) -->
+      <form id="registerForm" class="hidden">
+        <div class="form-group">
+          <label for="registerName">Business Name</label>
+          <input type="text" id="registerName" class="form-control" required placeholder="e.g. Nairobi Traders">
+        </div>
+        <div class="form-group">
+          <label for="registerEmail">Email Address</label>
+          <input type="email" id="registerEmail" class="form-control" required placeholder="name@business.com">
+        </div>
+        <div class="form-group">
+          <label for="registerPassword">Password (Min 6 chars)</label>
+          <input type="password" id="registerPassword" class="form-control" required placeholder="••••••••">
+        </div>
+        <div id="registerError" class="error-msg hidden"></div>
+        <button type="submit" class="btn btn-secondary" id="registerBtn">Create Account</button>
+      </form>
+
+      <div class="text-center mt-2">
+        <p id="toggleText"><span id="toggleMessage">Don't have an account?</span> <a href="#" id="toggleFormLink">Register here</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Authentication Logic -->
+  <script type="module" src="js/auth.js"></script>
+
+</body>
+</html>

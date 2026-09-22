@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SME Cash Insight - Budget Categories</title>
+  <meta name="description"
+    content="Create and manage custom budget categories for your SME. Track spending limits and organize your finances.">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <h1>Smart Financial Insights Platform</h1>
+      <nav class="nav-links">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="transactions.html">Transactions</a>
+        <a href="budget.html" class="active">Budget</a>
+        <a href="upload.html">Upload</a>
+        <a href="chatbot.html">AI Assistant</a>
+        <span id="userBusinessName"
+          style="margin-left: 1rem; color: var(--secondary-green); font-weight: 600;">Loading...</span>
+        <a href="#" id="logoutBtn">Logout</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Page Header -->
+    <section class="budget-page-header">
+      <div class="budget-title-row">
+        <div>
+          <h2> Budget Categories</h2>
+        </div>
+      </div>
+
+    <!-- Add Category Form -->
+    <section class="card" style="max-width: 100%; margin-top: 2rem; padding: 1.5rem;">
+      <h3 style="margin-bottom: 1rem;" id="formTitle"> Add New Category</h3>
+      <form id="categoryForm" style="display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end;">
+        <input type="hidden" id="editCategoryId" value="">
+        <div class="form-group" style="margin-bottom: 0; flex: 2; min-width: 180px;">
+          <label for="categoryName">Category Name</label>
+          <input type="text" id="categoryName" class="form-control" placeholder="e.g. Groceries" required maxlength="50">
+          <div id="nameError" class="error-msg hidden" style="position: absolute;"></div>
+        </div>
+        <div class="form-group" style="margin-bottom: 0; flex: 1.5; min-width: 150px;">
+          <label for="budgetLimit">Monthly Limit (KES)</label>
+          <input type="number" id="budgetLimit" class="form-control" placeholder="e.g. 15000" required min="1" step="0.01">
+          <div id="limitError" class="error-msg hidden" style="position: absolute;"></div>
+        </div>
+        <div style="flex: 0 0 auto;">
+          <button type="submit" class="btn" id="saveCategoryBtn" style="width: auto; padding: 0.75rem 1.5rem;">Add</button>
+          <button type="button" class="btn budget-btn-cancel hidden" id="cancelEditBtn" style="width: auto; padding: 0.75rem 1.5rem;">Cancel</button>
+        </div>
+      </form>
+    </section>
+
+      <!-- Summary Stats -->
+      <div class="budget-summary-grid" id="budgetSummaryGrid" style="margin-top: 2rem;">
+        <div class="budget-summary-card">
+          <span class="budget-summary-icon"></span>
+          <div>
+            <div class="budget-summary-value" id="totalCategories">0</div>
+            <div class="budget-summary-label">Total Categories</div>
+          </div>
+        </div>
+        <div class="budget-summary-card">
+          <span class="budget-summary-icon"></span>
+          <div>
+            <div class="budget-summary-value" id="totalExpenseBudget">KSh 0</div>
+            <div class="budget-summary-label">Expense Budget</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+
+    <!-- Categories Grid -->
+    <section class="budget-categories-grid" id="categoriesGrid">
+      <!-- Cards are rendered dynamically by JS -->
+    </section>
+
+    <!-- Empty State (shown when no categories exist) -->
+    <section class="budget-empty-state hidden" id="emptyState">
+      <div class="budget-empty-icon"></div>
+      <h3>No budget categories created yet</h3>
+      <p>Start organizing your finances by adding your first budget category below.</p>
+    </section>
+
+  </main>
+
+
+
+  <!-- Delete Confirmation Modal -->
+  <div class="budget-modal-overlay hidden" id="deleteModal">
+    <div class="budget-modal budget-modal-sm">
+      <div class="budget-modal-header budget-modal-header-danger">
+        <h3>Delete Category</h3>
+        <button class="budget-modal-close" id="closeDeleteModalBtn" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="budget-delete-body">
+        <p>Are you sure you want to delete <strong id="deleteCategoryName"></strong>?</p>
+        <p class="budget-delete-warning">This action cannot be undone.</p>
+      </div>
+      <div class="budget-modal-actions">
+        <button type="button" class="btn budget-btn-cancel" id="cancelDeleteBtn">Cancel</button>
+        <button type="button" class="btn budget-btn-danger" id="confirmDeleteBtn">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Auth Logic to handle route protection -->
+  <script type="module" src="js/auth.js"></script>
+  <!-- Budget Categories Logic -->
+  <script type="module" src="js/budget.js"></script>
+
+</body>
+
+</html>

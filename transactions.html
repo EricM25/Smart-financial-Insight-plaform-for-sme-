@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SME Cash Insight - Transactions</title>
+  <meta name="description" content="View and manage your daily cashbook transactions for your SME business.">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <h1>Smart Financial Insights Platform</h1>
+      <nav class="nav-links">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="transactions.html" class="active">Transactions</a>
+        <a href="budget.html">Budget</a>
+        <a href="upload.html">Upload</a>
+        <a href="chatbot.html">AI Assistant</a>
+        <span id="userBusinessName"
+          style="margin-left: 1rem; color: var(--secondary-green); font-weight: 600;">Loading...</span>
+        <a href="#" id="logoutBtn">Logout</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Add Transaction Form -->
+    <section class="card" style="max-width: 100%; margin-top: 2rem; padding: 1.5rem;">
+      <h3 style="margin-bottom: 1rem;"> Add New Transaction</h3>
+      <form id="addTransactionForm" style="display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end;">
+        <div class="form-group" style="margin-bottom: 0; flex: 1; min-width: 140px;">
+          <label for="txDate">Date</label>
+          <input type="date" id="txDate" class="form-control" required>
+        </div>
+        <div class="form-group" style="margin-bottom: 0; flex: 2; min-width: 180px;">
+          <label for="txDesc">Description</label>
+          <input type="text" id="txDesc" class="form-control" placeholder="e.g. Sales revenue" required>
+        </div>
+        <div class="form-group" style="margin-bottom: 0; flex: 1.5; min-width: 150px;">
+          <label for="txBudget">Budget Category</label>
+          <select id="txBudget" class="form-control">
+            <option value="">None</option>
+          </select>
+        </div>
+        <div class="form-group" style="margin-bottom: 0; flex: 1; min-width: 120px;">
+          <label for="txCashIn">Cash In (KES)</label>
+          <input type="number" id="txCashIn" class="form-control" placeholder="0.00" min="0" step="0.01">
+        </div>
+        <div class="form-group" style="margin-bottom: 0; flex: 1; min-width: 120px;">
+          <label for="txCashOut">Cash Out (KES)</label>
+          <input type="number" id="txCashOut" class="form-control" placeholder="0.00" min="0" step="0.01">
+        </div>
+        <div style="flex: 0 0 auto;">
+          <button type="submit" class="btn" id="txSubmitBtn" style="width: auto; padding: 0.75rem 1.5rem;">Add</button>
+        </div>
+      </form>
+      <div id="txErrorMsg" class="error-msg hidden" style="margin-top: 0.5rem;"></div>
+    </section>
+
+    <!-- Transaction Table -->
+    <section class="card" style="max-width: 100%; margin-top: 1.5rem; padding: 1.5rem; overflow-x: auto;">
+      <h3 style="margin-bottom: 1rem;"> Transaction History</h3>
+      <table style="width: 100%; border-collapse: collapse; min-width: 600px;">
+        <thead>
+          <tr style="background: var(--primary-blue); color: var(--accent-white);">
+            <th style="padding: 10px; text-align: left;">Date</th>
+            <th style="padding: 10px; text-align: left;">Description</th>
+            <th style="padding: 10px; text-align: left;">Category</th>
+            <th style="padding: 10px; text-align: left;">Cash In</th>
+            <th style="padding: 10px; text-align: left;">Cash Out</th>
+            <th style="padding: 10px; text-align: left;">Balance</th>
+          </tr>
+        </thead>
+        <tbody id="transactionTableBody">
+          <tr>
+            <td colspan="6" class="text-center" style="padding: 20px; color: var(--text-light);">Loading
+              transactions...</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+  </main>
+
+  <!-- Auth Logic to handle route protection -->
+  <script type="module" src="js/auth.js"></script>
+  <!-- Transactions Logic -->
+  <script type="module" src="js/transactions.js"></script>
+
+</body>
+
+</html>

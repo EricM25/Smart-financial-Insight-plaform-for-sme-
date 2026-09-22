@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SME Cash Insight - Dashboard</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <!-- Chart.js for data visualization -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- SheetJS for Excel parsing -->
+  <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <h1>S.M.E Financial Insights</h1>
+      <nav class="nav-links">
+        <a href="dashboard.html" class="active">Dashboard</a>
+        <a href="transactions.html">Transactions</a>
+        <a href="budget.html">Budget</a>
+        <a href="upload.html">Upload</a>
+        <a href="chatbot.html">AI Assistant</a>
+        <span id="userBusinessName"
+          style="margin-left: 1rem; color: var(--secondary-green); font-weight: 600;">Loading...</span>
+        <a href="#" id="logoutBtn">Logout</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+
+
+
+    <!-- Stats Overview -->
+    <section class="dashboard-grid">
+      <div class="stat-card income">
+        <h3>Total Income (Cash In)</h3>
+        <div class="value" id="totalIncome">KSh 0.00</div>
+      </div>
+      <div class="stat-card expense">
+        <h3>Total Expenses (Cash Out)</h3>
+        <div class="value" id="totalExpense">KSh 0.00</div>
+      </div>
+      <div class="stat-card">
+        <h3>Net Balance</h3>
+        <div class="value" id="netBalance">KSh 0.00</div>
+      </div>
+    </section>
+
+    <!-- Top 3 Budget Categories Summary -->
+    <section class="budget-top3-section" id="budgetTop3Section">
+      <h3>Top Budget Categories</h3>
+      <div class="budget-top3-grid" id="budgetTop3Grid">
+        <!-- Rendered by dashboard.js -->
+      </div>
+      <div class="budget-top3-empty hidden" id="budgetTop3Empty">
+      </div>
+    </section>
+
+    <!-- Charts -->
+    <section class="charts-grid">
+      <!-- Top Income Categories Chart -->
+      <div class="chart-container">
+        <h3 class="text-center mb-1">Top Income</h3>
+        <canvas id="incomeChart"></canvas>
+      </div>
+      <!-- Top Expense Categories Chart -->
+      <div class="chart-container">
+        <h3 class="text-center mb-1">Top Expense</h3>
+        <canvas id="pieChart"></canvas>
+      </div>
+      <!-- Line Chart — full width -->
+      <div class="chart-container" style="grid-column: 1 / -1;">
+        <h3 class="text-center mb-1">Cash Flow Trend</h3>
+        <canvas id="lineChart"></canvas>
+      </div>
+      <!-- Bar Chart — full width -->
+      <div class="chart-container" style="grid-column: 1 / -1;">
+        <h3 class="text-center mb-1">Daily Inflows vs Outflows</h3>
+        <canvas id="barChart"></canvas>
+      </div>
+    </section>
+
+
+
+  </main>
+
+  <!-- Auth Logic to handle route protection -->
+  <script type="module" src="js/auth.js"></script>
+  <!-- Dashboard Logic -->
+  <script type="module" src="js/dashboard.js"></script>
+
+</body>
+
+</html>
