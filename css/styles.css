@@ -596,10 +596,6 @@ h3 {
   opacity: 1;
 }
 
-.budget-modal-overlay.hidden {
-  /* kept visible during fade-out by JS setTimeout */
-}
-
 .budget-modal {
   background: var(--accent-white);
   border-radius: 12px;
